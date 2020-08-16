@@ -31,6 +31,11 @@ The backend is located in the root directory, where frontend files are under cli
 ### Frontend Structure
 Located under client/src
  - components
+    - Component defintions
  - handlers
+    - handlers are created for objects that require more complex logic than simply using the services
+    - acts as a middleman, ex: button => handler => service call
  - reducers
+    - using redux to handle state
  - services
+    - performs HTTP requests

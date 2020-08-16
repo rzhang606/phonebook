@@ -4,6 +4,7 @@ import Notification from './components/Notification'
 import Error from './components/Error'
 import LoginForm from './components/LoginForm'
 import PersonForm from './components/PersonForm'
+import UserForm from './components/UserForm'
 
 import personService from './services/Persons'
 import loginService from './services/Login'
@@ -12,8 +13,10 @@ import store from './reducers/store';
 import { fetchPStore } from './reducers/personReducer'
 import { createErrAction } from './reducers/errorReducer';
 import { createNotif } from './reducers/notifReducer';
+import { fetchUStore } from './reducers/usersReducer'
 
 import { Button } from 'react-bootstrap'
+
 
 const App = () => {
 
@@ -52,6 +55,7 @@ const App = () => {
     useEffect(() => {
         console.log('Fetching data ... ');
         store.dispatch(fetchPStore());
+        store.dispatch(fetchUStore());
     }, []) // empty array tells it to only run initially
 
     //check for logged in user
@@ -73,6 +77,7 @@ const App = () => {
             {user === null ?
                 <div>
                     <LoginForm login={login} />
+                    <UserForm/>
                     <h2>Please log in to view numbers</h2>
                 </div>
                 :
