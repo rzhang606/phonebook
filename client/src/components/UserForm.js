@@ -9,6 +9,11 @@ const UserForm = () => {
     const [ newUsername, setNewUsername ] = useState(''); 
     const [ newPassword, setNewPassword ] = useState('');
 
+    const [ visible, setVisible ] = useState(false);
+    const toggleVisibility = () => {
+        setVisible(!visible);
+    }
+
     const handleNameChange = (event) => {
         setNewName(event.target.value);
     }
@@ -34,11 +39,13 @@ const UserForm = () => {
         setNewUsername('');
         setNewPassword('');
 
+        toggleVisibility();
+
     }
     
     return (
         <div>
-            <Togglable buttonLabel='Create User Account'>
+            <Togglable buttonLabel='Create User Account' visible={visible} toggleVisibility={toggleVisibility}>
                 <h2>Create new user</h2>
                 <Form onSubmit={createUser}>
                     <FormField title="Name" input={newName} inputHandler={handleNameChange} />

@@ -8,6 +8,11 @@ const PersonForm = ({user}) => {
     const [ newName, setNewName ] = useState(''); // form input name
     const [ newNumber, setNewNumber ] = useState(''); // form input number
 
+    const [ visible, setVisible ] = useState(false);
+    const toggleVisibility = () => {
+        setVisible(!visible);
+    }
+
     const handleNameChange = (event) => {
         setNewName(event.target.value);
     }
@@ -29,7 +34,7 @@ const PersonForm = ({user}) => {
     }
     
     return (
-        <Togglable buttonLabel='Create New Note'>
+        <Togglable buttonLabel='Create New Note' visible={visible} toggleVisibility={toggleVisibility}>
             <h2>Add New as {user.name}:</h2>
             <Form onSubmit={createPerson}>
                 <FormField title="Name" input={newName} inputHandler={handleNameChange} />

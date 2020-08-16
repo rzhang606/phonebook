@@ -7,6 +7,11 @@ const LoginForm = ({login}) => {
     const [ username, setUsername ] = useState(''); // form input username
     const [ password, setPassword ] = useState('');
 
+    const [ visible, setVisible ] = useState(false);
+    const toggleVisibility = () => {
+        setVisible(!visible);
+    }
+
     const handleUsernameChange = (event) => {
         setUsername(event.target.value);
     }
@@ -27,11 +32,12 @@ const LoginForm = ({login}) => {
         setUsername('');
         setPassword('');
 
-        this.props.children[1].toggleVisibility();
+        toggleVisibility();
+
     }
 
     return (
-        <Togglable buttonLabel='Login here'>
+        <Togglable buttonLabel='Login here' visible={visible} toggleVisibility={toggleVisibility}>
             <Form onSubmit={handleLogin}>
                 <FormField title={'Username'} input={username} inputHandler={handleUsernameChange}/>
                 <FormField title={'Password'} input={password} inputHandler={handlePasswordChange}/>
