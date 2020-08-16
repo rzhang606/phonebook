@@ -7,4 +7,15 @@ const getUsers = () => {
     return request.then(response => response.data);
 }
 
-export default { getUsers };
+/**
+ * 
+ * @param {Object} userObject 
+ * Fields: name, username, password
+ */
+const addUser = async (userObject) => {
+    console.log("Adding new user: ", userObject.name);
+    const response = await axios.post(baseUrl, userObject);
+    return response.data;
+}
+
+export default { getUsers, addUser };

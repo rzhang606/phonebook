@@ -5,6 +5,7 @@ import Error from './components/Error'
 import LoginForm from './components/LoginForm'
 import PersonForm from './components/PersonForm'
 import AllUsers from './components/AllUsers'
+import UserForm from './components/UserForm'
 
 import personService from './services/Persons'
 import loginService from './services/Login'
@@ -78,6 +79,7 @@ const App = () => {
                 <div>
                     <LoginForm login={login} />
                     <AllUsers/>
+                    <UserForm/>
                     <h2>Please log in to view numbers</h2>
                 </div>
                 :

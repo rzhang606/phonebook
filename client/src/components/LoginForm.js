@@ -26,6 +26,8 @@ const LoginForm = ({login}) => {
 
         setUsername('');
         setPassword('');
+
+        this.props.children[1].toggleVisibility();
     }
 
     return (
